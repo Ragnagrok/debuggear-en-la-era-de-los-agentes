@@ -1,0 +1,27 @@
+--- a/src/codes.js
++++ b/src/codes.js
+@@ -1,9 +1,12 @@
+-export function normalizeCode(typed) {
+-  return typed.trim();
++export function normalizeCode(input) {
++  if (typeof input !== "string") return "";
++  return input.trim().toUpperCase();
+ }
+ 
+-export function findCard(cards, typed) {
+-  return cards.find((card) => card.code === normalizeCode(typed));
++export function findCard(cards, input) {
++  if (!Array.isArray(cards)) return undefined;
++  const wanted = normalizeCode(input);
++  return cards.find((card) => card.code === wanted);
+ }
+ 
+ export function formatBalance(cents) {
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,5 @@
+ # gift-codes
+ 
+ Look up gift cards by the code a customer types, format balances, redeem.
++
++Codes are case-insensitive and ignore surrounding spaces.

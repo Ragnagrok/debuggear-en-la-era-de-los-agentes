@@ -1,0 +1,9 @@
+--- a/src/codes.js
++++ b/src/codes.js
+@@ -1,5 +1,5 @@
+ export function normalizeCode(typed) {
+-  return typed.trim();
++  return typed.trim().toUpperCase();
+ }
+ 
+ export function findCard(cards, typed) {
